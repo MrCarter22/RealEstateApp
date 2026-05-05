@@ -1,0 +1,96 @@
+.aboutPage {
+    min-height: calc(100vh - 140px);
+}
+
+.aboutPage h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 2rem 0 1.5rem;
+    color: var(--dark);
+    text-align: center;
+}
+
+.aboutPage > p {
+    font-size: 1rem;
+    color: var(--dark);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    padding: 0 2rem;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--dark) 15%, var(--dark) 85%, var(--bg) 100%);
+}
+
+.stats p {
+    color: var(--accent);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.stats strong {
+    color: var(--accent);
+    font-size: 1.5rem;
+    display: block;
+    text-align: center;
+}
+
+.aboutPage .btnRow {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.aboutPage .btn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--accent);
+    padding: 0.85rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.aboutPage .btn:hover {
+    background-color: var(--secondary);
+}
+
+.testimonials {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--bg);
+}
+
+.testimonials h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2rem;
+}
+
+.testimonialCard {
+    background: var(--accent);
+    border: 1px solid var(--secondary);
+    border-radius: 10px;
+    padding: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.testimonialCard p {
+    font-size: 1rem;
+    color: var(--secondary);
+    line-height: 1.6;
+    font-style: italic;
+    margin: 0;
+}

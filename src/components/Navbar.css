@@ -1,0 +1,92 @@
+.navbar {
+    position: fixed;  /* you forgot position: fixed */
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: var(--dark);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;  /* brand left, links right */
+    align-items: center;             /* vertical centering */
+}
+
+.navMenu {
+    display: flex;        /* this makes li items horizontal */
+    gap: 2rem;
+    list-style: none;     /* removes bullet points */
+    align-items: center;
+}
+
+.navMenu li a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.navMenu li a:hover {
+    color: var(--secondary);
+}
+
+.navBrand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.navBrand, .navBrand:visited, .navBrand:hover {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown button {
+    background: transparent;
+    border: 1px solid var(--secondary);
+    color: var(--accent);
+    padding: 0.4rem 0.85rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+.dropdown button:hover {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    background-color: var(--dark);
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    list-style: none;
+    min-width: 160px;
+    z-index: 200;
+    padding: 0.5rem 0;
+}
+
+.dropdownMenu li a {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background-color 0.2s;
+}
+
+.dropdownMenu li a:hover {
+    background-color: rgba(255,255,255,0.1);
+}

@@ -1,0 +1,106 @@
+.propertyDetailPage {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 140px);
+}
+
+.propertyDetailPage h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    text-align: center;
+}
+
+.propertyDetailPage img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.propertyHeader {
+    margin-bottom: 2rem;
+}
+
+.propertyHeader h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+}
+
+.location {
+    font-size: 1rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.quickInfo {
+    font-size: 1rem;
+    color: var(--secondary);
+    margin-bottom: 0.75rem;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.propertySpecs h3,
+.description h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+}
+
+.specsList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.specItem {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary);
+}
+
+.specLabel {
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.specValue {
+    color: var(--secondary);
+}
+
+.description p {
+    line-height: 1.6;
+    color: var(--dark);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .propertyHeader h2 {
+        font-size: 1.5rem;
+    }
+
+    .price {
+        font-size: 1.3rem;
+    }
+}

@@ -1,0 +1,171 @@
+.hero {
+    background-image: url('/hero.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: -70px; /* Adjusted for fixed header */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 26, 58, 0.6);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    color: var(--accent);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary);
+    color: var(--accent);
+    padding: 0.85rem 2rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    margin-top: 1.5rem;
+}
+
+.btn:hover {
+    background-color: var(--secondary);
+}
+
+.heroContent h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.heroContent p {
+    font-size: 1.15rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+}
+
+/* Section: Stat Banner */
+.statBanner {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding: 4rem 2rem;
+    background-color: var(--dark);
+    background: linear-gradient(180deg, var(--dark) 85%, var(--bg) 100%);
+}
+
+.stat {
+    text-align: center;
+    color: var(--accent);
+}
+
+.stat h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--secondary);
+    margin-top: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Featured Properties Section */
+.featuredProperties {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: var(--bg);
+}
+
+.featuredProperties h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 2rem;
+}
+
+.propertyGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Lead Capture Section */
+.leadCapture {
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+    background-color: var(--bg);
+}
+
+.leadCapture h2 {
+    color: var(--dark);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.leadCapture p {
+    color: var(--secondary);
+    margin-bottom: 1.5rem;
+}
+
+.leadCapture form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.leadCapture input,
+.leadCapture textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--secondary);
+    border-radius: 5px;
+    font-size: 1rem;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.leadCapture textarea {
+    resize: vertical;
+}
+
+.leadCapture button {
+    background-color: var(--primary);
+    color: var(--accent);
+    padding: 0.85rem 2rem;
+    border-radius: 5px;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 60%;
+    margin-top: 0.5rem;
+}
+
+.leadCapture button:hover {
+    background-color: var(--secondary);
+}

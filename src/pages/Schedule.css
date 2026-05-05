@@ -1,0 +1,73 @@
+.schedulePage {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.scheduleForm {
+    background-color: var(--accent);
+    padding: 2rem;
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    border: 1px solid var(--secondary);
+    box-shadow: 0 4px 20px rgba(0, 26, 58, 0.12);
+}
+
+.scheduleForm h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: var(--dark);
+    text-align: center;
+}
+
+.contactForm label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark);
+    font-weight: 600;
+}
+.contactForm input,
+.contactForm textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+}
+
+.contactForm button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary);
+    color: var(--accent);
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.contactForm button:hover {
+    background-color: var(--secondary);
+}
+
+.contactForm select {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 5px;
+    background-color: white;
+}
+
+.contactForm input,
+.contactForm textarea,
+.contactForm select {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+}
