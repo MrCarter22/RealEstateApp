@@ -5,6 +5,25 @@ import { getConsultations, deleteConsultation } from "../api/consultations"
 import { logout } from "../api/auth"
 import './AgentDashboard.css'
 
+function formatDate(isoDateString) {
+  if (!isoDateString) return "N/A"
+  return new Date(isoDateString).toLocaleDateString("en-US", {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
+function formatTime(timeString) {
+  if (!timeString) return "N/A"
+  const [hoursStr, minutesStr] = timeString.split(":")
+  const hours = parseInt(hoursStr, 10)
+  const period = hours >= 12 ? "PM" : "AM"
+  const displayHours = hours % 12 === 0 ? 12 : hours % 12
+  return `${displayHours}:${minutesStr} ${period}`
+}
+
 function AgentDashboard() {
   const [activeTab, setActiveTab] = useState("leads")
   const [leads, setLeads] = useState([])
@@ -85,7 +104,10 @@ function AgentDashboard() {
             <ul>
               {leads.map(lead => (
                 <li key={lead.id}>
-                  <span>{lead.name} - {lead.email} - {lead.phone}</span>
+                  <div className="itemInfo">
+                    <span className="itemSummary">{lead.name} - {lead.email} - {lead.phone}</span>
+                    {lead.message && <p className="itemMessage">"{lead.message}"</p>}
+                  </div>
                   {confirmLeadId === lead.id ? (
                     <span className="confirmActions">
                       <button onClick={() => handleDiscardLead(lead.id)}>Confirm</button>
@@ -105,7 +127,12 @@ function AgentDashboard() {
             <ul>
               {consultations.map(consultation => (
                 <li key={consultation.id}>
-                  <span>{consultation.name} - {consultation.email} - {consultation.phone} - {consultation.date} at {consultation.time}</span>
+                  <div className="itemInfo">
+                    <span className="itemSummary">
+                      {consultation.name} - {consultation.email} - {consultation.phone} - {formatDate(consultation.date)} at {formatTime(consultation.time)}
+                    </span>
+                    {consultation.message && <p className="itemMessage">"{consultation.message}"</p>}
+                  </div>
                   {confirmConsultationId === consultation.id ? (
                     <span className="confirmActions">
                       <button onClick={() => handleDiscardConsultation(consultation.id)}>Confirm</button>

@@ -78,9 +78,23 @@
     color: var(--dark);
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     gap: 1rem;
+}
+
+.itemInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.itemMessage {
+    color: var(--secondary);
+    font-style: italic;
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
 }
 
 .tabContent li button {
