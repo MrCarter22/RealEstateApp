@@ -8,6 +8,7 @@ function Properties() {
     const [properties, setProperties] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState("")
+    const [searchQuery, setSearchQuery] = useState("")
     const [lowestPrice, setLowestPrice] = useState("")
     const [highestPrice, setHighestPrice] = useState("")
     const [bedrooms, setBedrooms] = useState("")
@@ -23,7 +24,9 @@ function Properties() {
     }, [])
 
     const filteredProperties = properties.filter(property => {
+    const query = searchQuery.trim().toLowerCase()
     return (
+        (query === "" || property.address.toLowerCase().includes(query) || property.city.toLowerCase().includes(query)) &&
         (lowestPrice === "" || property.price >= Number(lowestPrice)) &&
         (highestPrice === "" || property.price <= Number(highestPrice)) &&
         (bedrooms === "" || property.bedrooms >= Number(bedrooms)) &&
@@ -35,7 +38,8 @@ function Properties() {
 
   return (
     <div className="propertiesPage">
-        <SearchFilters 
+        <SearchFilters
+            searchQuery={searchQuery} setSearchQuery={setSearchQuery}
             lowestPrice={lowestPrice} setLowestPrice={setLowestPrice}
             highestPrice={highestPrice} setHighestPrice={setHighestPrice}
             bedrooms={bedrooms} setBedrooms={setBedrooms}

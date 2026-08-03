@@ -1,10 +1,13 @@
 
-function SearchFilters({lowestPrice, setLowestPrice, highestPrice, setHighestPrice, bedrooms, setBedrooms, bathrooms, setBathrooms, sqft, setSqft, propertyType, setPropertyType}) {
+function SearchFilters({searchQuery, setSearchQuery, lowestPrice, setLowestPrice, highestPrice, setHighestPrice, bedrooms, setBedrooms, bathrooms, setBathrooms, sqft, setSqft, propertyType, setPropertyType}) {
   return (
 
     <div className="searchFilters">
         <h3>Search Filters</h3>
             <div className="filterGroup">
+                <label>Address or City
+                    <input type="text" placeholder="e.g. Pearland or Main St" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
+                </label>
                 <label>Min Price
                     <input type="number" value={lowestPrice} onChange={(e) => setLowestPrice(e.target.value)} />
                 </label>
