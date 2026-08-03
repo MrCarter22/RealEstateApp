@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { submitConsultation } from "../api/consultations"
 import './Schedule.css'
 
 function Schedule() {
@@ -7,22 +8,29 @@ function Schedule() {
   const [phone, setPhone] = useState("")
   const [date, setDate] = useState("")
   const [time, setTime] = useState("")
-  const [meetingType, setMeetingType] = useState("")
-  const [propertyType, setPropertyType] = useState("")
+  const [meetingType, setMeetingType] = useState("inPerson")
+  const [propertyType, setPropertyType] = useState("sale")
   const [message, setMessage] = useState("")
+  const [status, setStatus] = useState("")
 
-  const handleSubmit = (e) => {
-    e.preventDefault() // stops page from refreshing
-    const data = { name, email, phone, date, time, meetingType, propertyType, message}
-    console.log(data) // for now, just log the form data to the console
-    setName("")
-    setEmail("")
-    setPhone("")
-    setDate("")
-    setTime("")
-    setMeetingType("")
-    setPropertyType("")
-    setMessage("")
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus("")
+    const data = { name, email, phone, date, time, meetingType, propertyType, message }
+    try {
+      await submitConsultation(data)
+      setStatus("success")
+      setName("")
+      setEmail("")
+      setPhone("")
+      setDate("")
+      setTime("")
+      setMeetingType("inPerson")
+      setPropertyType("sale")
+      setMessage("")
+    } catch (err) {
+      setStatus(err.message || "Something went wrong. Please try again.")
+    }
   }
 
   return (
@@ -64,7 +72,9 @@ function Schedule() {
 
           <button type="submit">Submit</button>
         </form>
-      </div> 
+        {status === "success" && <p>Thanks! Your consultation request has been sent.</p>}
+        {status && status !== "success" && <p>{status}</p>}
+      </div>
     </div>
 
   )

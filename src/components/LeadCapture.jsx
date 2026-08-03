@@ -1,17 +1,26 @@
 import { useState } from "react"
+import { submitLead } from "../api/leads"
+
 function LeadCapture() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [phone, setPhone] = useState("")
   const [message, setMessage] = useState("")
+  const [status, setStatus] = useState("")
 
-  const handleSubmit = (e) => {
-  e.preventDefault() // stops page from refreshing
-  console.log({ name, email, phone, message }) // for now, just log the form data to the console
-  setName("")
-  setEmail("")
-  setPhone("")
-  setMessage("")
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus("")
+    try {
+      await submitLead({ name, email, phone, message })
+      setStatus("success")
+      setName("")
+      setEmail("")
+      setPhone("")
+      setMessage("")
+    } catch (err) {
+      setStatus(err.message || "Something went wrong. Please try again.")
+    }
   }
 
   return (
@@ -25,6 +34,8 @@ function LeadCapture() {
         <textarea placeholder="Your Message" rows="3" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
         <button type="submit">Send Message</button>
       </form>
+      {status === "success" && <p>Thanks! We'll be in touch soon.</p>}
+      {status && status !== "success" && <p>{status}</p>}
     </div>
   )
 }

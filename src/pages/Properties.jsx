@@ -1,10 +1,13 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import PropertyCard from "../components/PropertyCard"
 import SearchFilters from "../components/SearchFilters"
-import mockProperties from "../data/mockProperties"
+import { getProperties } from "../api/properties"
 import './Properties.css'
 
 function Properties() {
+    const [properties, setProperties] = useState([])
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState("")
     const [lowestPrice, setLowestPrice] = useState("")
     const [highestPrice, setHighestPrice] = useState("")
     const [bedrooms, setBedrooms] = useState("")
@@ -12,7 +15,14 @@ function Properties() {
     const [sqft, setSqft] = useState("")
     const [propertyType, setPropertyType] = useState("all")
 
-    const filteredProperties = mockProperties.filter(property => {
+    useEffect(() => {
+        getProperties()
+            .then(setProperties)
+            .catch((err) => setError(err.message))
+            .finally(() => setLoading(false))
+    }, [])
+
+    const filteredProperties = properties.filter(property => {
     return (
         (lowestPrice === "" || property.price >= Number(lowestPrice)) &&
         (highestPrice === "" || property.price <= Number(highestPrice)) &&
@@ -34,15 +44,20 @@ function Properties() {
             propertyType={propertyType} setPropertyType={setPropertyType}
         />
 
-        <div className="propertyGrid">
-            {filteredProperties.map(property => (
-                <PropertyCard key={property.id} property={property} />
-            ))}
-        </div>
+        {loading && <p>Loading properties...</p>}
+        {error && <p>Couldn't load properties: {error}</p>}
+
+        {!loading && !error && (
+            <div className="propertyGrid">
+                {filteredProperties.map(property => (
+                    <PropertyCard key={property.id} property={property} />
+                ))}
+            </div>
+        )}
     </div>
 
   )
-  
+
 }
 
 export default Properties

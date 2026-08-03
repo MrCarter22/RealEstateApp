@@ -1,7 +1,7 @@
 import PropertyCard from "../components/PropertyCard";
 import LeadCapture from "../components/LeadCapture";
 import { Link } from "react-router-dom";
-import mockProperties from "../data/mockProperties";
+import { getProperties } from "../api/properties";
 import './Home.css'
 import { useState, useEffect } from "react";
 
@@ -27,6 +27,14 @@ function StatCounter({ target }) {
 }
 
 function Home() {
+    const [featuredProperties, setFeaturedProperties] = useState([])
+
+    useEffect(() => {
+        getProperties()
+            .then(properties => setFeaturedProperties(properties.slice(0, 4)))
+            .catch(() => setFeaturedProperties([]))
+    }, [])
+
     return (
         <>        
           <section className="hero">
@@ -56,7 +64,7 @@ function Home() {
         <section className = "featuredProperties">
             <h2>Featured Properties</h2>
             <div className="propertyGrid">
-                {mockProperties.slice(0, 4).map(property => (
+                {featuredProperties.map(property => (
                     <PropertyCard key={property.id} property={property} />
                 ))}
             </div>

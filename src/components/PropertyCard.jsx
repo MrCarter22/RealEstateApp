@@ -8,8 +8,8 @@ function PropertyCard({ property }) {
         <img src={property.image} alt={property.address} />
         <h3>{property.address}</h3>
         <p>{property.city} {property.zip}</p>
-        <p>{property.bedrooms} beds | {property.bathrooms} baths | {property.sqft.toLocaleString()} sqft</p>
-        <p>${property.price.toLocaleString()}</p>
+        <p>{property.bedrooms ?? "N/A"} beds | {property.bathrooms ?? "N/A"} baths | {property.sqft ? property.sqft.toLocaleString() : "N/A"} sqft</p>
+        <p>{property.price ? `$${property.price.toLocaleString()}` : "Price N/A"}</p>
         </div>
     </Link>
   )

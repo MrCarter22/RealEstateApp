@@ -8,7 +8,7 @@ function Footer() {
         <div className="footerLeft">
           <p>Phone: (281)-744-2361</p>
           <p>Email: dericcarter@hotmail.com</p>
-          <p>License: 123456789</p>
+          <p>License: 744536</p>
         </div>
         <nav>
           <Link to="/about">About</Link>
